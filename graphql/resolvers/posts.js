@@ -16,15 +16,6 @@ module.exports = {
             throw new Error(error);
           }
         },
-        async getLimitedPosts(_, { offset, limit }) {
-          try {
-            const posts = await Post.find().sort({createdAt:-1});
-            
-            return posts.slice(offset, offset+limit);
-          } catch (error) {
-            throw new Error(error);
-          }
-        },
         async getPost(_, {postId}){
           try{
             const post = await Post.findById(postId);
