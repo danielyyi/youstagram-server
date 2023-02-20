@@ -34,6 +34,7 @@ module.exports = gql`
   }
   type Query {
     getPosts: [Post]
+    getLimitedPosts (offset: Int, limit: Int): [Post]
     getUsers: [User]
     getPost(postId: ID!): Post
     getUser(id: ID!): User
