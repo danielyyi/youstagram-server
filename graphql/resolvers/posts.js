@@ -16,6 +16,25 @@ module.exports = {
             throw new Error(error);
           }
         },
+        async loadPosts(_, {limit}) {
+          try {
+            const posts = await Post.find({}).sort({createdAt:-1}).limit(parseInt(limit))
+
+
+
+            return posts;
+          } catch (error) {
+            throw new Error(error);
+          }
+        },
+        async getPostsByUser(_, {username}) {
+          try {
+            const posts = await Post.find({username: username});
+            return posts;
+          } catch (error) {
+            throw new Error(error);
+          }
+        },
         async getPost(_, {postId}){
           try{
             const post = await Post.findById(postId);
